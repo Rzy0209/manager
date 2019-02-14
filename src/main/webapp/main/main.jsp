@@ -13,6 +13,44 @@
     <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
+        $(function () {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/ddmenu/showAll",
+                type: "post",
+                dataType: "JSON",
+                success: function (data) {
+                    $.each(data, function (index, first) {
+                        $('#aa').accordion('add', {
+                            title: first.title,
+                            content: '<div><ul id="' + first.id + '" name="' + first.title + '"></ul></div>',
+                            selected: false
+                        });
+                    })
+                }
+            });
+
+            $("#aa").accordion({
+                onSelect: function (title) {
+                    $("ul[name='" + title + "']").tree({
+                        url: "${pageContext.request.contextPath}/ddmenu/two?id=" + $("ul[name='" + title + "']").prop("id"),
+                        onClick: function (node) {
+                            if ($("#tt").tabs("exists", node.title)) {
+                                $("#tt").tabs("select", node.title);
+                            } else {
+                                $("#tt").tabs("add", {
+                                    title: node.title,
+                                    closable: true,
+                                    href: "${pageContext.request.contextPath}" + node.url,
+                                    iconCls: node.iconCls
+                                });
+                            }
+                        }
+                    })
+                }
+
+            })
+
+        });
     </script>
 
 </head>
