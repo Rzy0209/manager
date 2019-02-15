@@ -28,6 +28,12 @@ public class ShiroFilter {
         map.put("/shiro/login", "anon");
         map.put("/error.jsp", "anon");
         map.put("/login.jsp", "anon");
+        map.put("/css/**", "anon");
+        map.put("/img/**", "anon");
+        map.put("/js/**", "anon");
+        map.put("/main/image/*", "anon");
+        map.put("/script/**", "anon");
+        map.put("/themes/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }
