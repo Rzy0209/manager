@@ -21,4 +21,19 @@ public class CategoryController {
         List<Category> list = categoryService.queryAll();
         return list;
     }
+
+    @ResponseBody
+    @RequestMapping("addCategory")
+    public void addCategory(Category category) {
+        categoryService.addCategory(category);
+    }
+
+    @ResponseBody
+    @RequestMapping("categoryAdd")
+    public void categoryAdd(Category category) {
+
+        System.out.println(category);
+
+        categoryService.categoryAdd(category);
+    }
 }

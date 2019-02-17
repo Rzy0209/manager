@@ -10,6 +10,7 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 public class Category implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private String id;
+    private Integer id;
     @Column(name = "category_name")
     private String categoryName;
     private String pid;
@@ -29,5 +30,6 @@ public class Category implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JSONField(format = "yyyy-MM-dd")
     private Date time;
+    @Transient
     private List<Category> children;
 }

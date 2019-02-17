@@ -2,6 +2,32 @@
 
 <script type="text/javascript">
     $(function () {
+        var toolbar = [{
+            iconCls: 'icon-add',
+            text: "添加类别",
+            handler: function () {
+                $("#addCategoryDialog").dialog({
+                    title: "添加类别",
+                    width: 500,
+                    height: 300,
+                    href: "${pageContext.request.contextPath}/category/AddCategory.jsp"
+                })
+            }
+        }, '-', {
+            text: "添加类别书籍",
+            iconCls: 'icon-add',
+            handler: function () {
+                $("#addCategoryDia").dialog({
+                    title: "添加类别书籍",
+                    width: 500,
+                    height: 300,
+                    href: "${pageContext.request.contextPath}/category/categoryAdd.jsp"
+                })
+            }
+        }
+        ]
+
+
         $('#category').treegrid({
             method: "post",
             url: '${pageContext.request.contextPath}/category/showAll',
@@ -17,7 +43,10 @@
             ]],
             fit: true,
             fitColumns: true,
+            toolbar: toolbar
         });
+
+
     })
 
     function formatterStatus(value) {
@@ -30,7 +59,12 @@
         }
     }
 
+
 </script>
 
 
 <table id="category"></table>
+<div id="addCategoryDialog"></div>
+<div id="addCategoryDia"></div>
+
+

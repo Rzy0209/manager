@@ -15,6 +15,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Resource
     CategoryMapper categoryMapper;
 
+    /**
+     * 查一级类别以及归属子类
+     *
+     * @return
+     */
     @Override
     public List<Category> queryAll() {
         List<Category> list = categoryMapper.queryAll();
@@ -23,5 +28,31 @@ public class CategoryServiceImpl implements CategoryService {
         } else {
             return list;
         }
+    }
+
+    /**
+     * 添加类别
+     */
+    @Override
+    public void addCategory(Category category) {
+        categoryMapper.addCategory(category);
+    }
+
+    /**
+     * 添加分类下的二级分类
+     *
+     * @param category
+     */
+    @Override
+    public void categoryAdd(Category category) {
+        Integer on = 1;
+
+        if (on.equals(category.getStatus())) {
+            category.setStatus(1);
+            System.out.println(category.getStatus());
+        } else {
+            category.setStatus(0);
+        }
+        categoryMapper.categoryAdd(category);
     }
 }

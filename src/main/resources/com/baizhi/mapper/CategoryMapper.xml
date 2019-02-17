@@ -35,4 +35,16 @@
     </select>
 
 
+    <!-- 添加类别 -->
+    <insert id="addCategory" parameterType="com.baizhi.entity.Category">
+        insert into category (category_name)
+        values (#{categoryName})
+    </insert>
+
+    <!-- 添加类别所属书籍 -->
+    <insert id="categoryAdd" parameterType="com.baizhi.entity.Category">
+        insert into category (id, category_name, pid, status, time)
+        values (#{id}, #{categoryName}, #{pid}, #{status}, #{time})
+    </insert>
+
 </mapper>
