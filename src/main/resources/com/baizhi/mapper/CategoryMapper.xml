@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.CategoryMapper">
+    <resultMap type="com.baizhi.entity.Category" id="category1">
+        <id column="cid" property="id"/>
+        <result column="ccategoryname" property="categoryName"/>
+        <result column="cpid" property="pid"/>
+        <result column="cstatus" property="status"></result>
+        <result column="ctime" property="time"></result>
+        <collection property="children" ofType="com.baizhi.entity.Category">
+            <id column="tid" property="id"/>
+            <result column="tcategoryname" property="categoryName"/>
+            <result column="tpid" property="pid"/>
+            <result column="tstatus" property="status"></result>
+            <result column="ttime" property="time"></result>
+        </collection>
+    </resultMap>
+
+
+    <select id="queryAll" resultMap="category1">
+        select distinct c.id            cid,
+                        c.category_name ccategoryname,
+                        c.pid           cpid,
+                        c.status        cstatus,
+                        c.time          ctime,
+                        t.id            tid,
+                        t.category_name tcategoryname,
+                        t.pid           tpid,
+                        t.status        tstatus,
+                        t.time          ttime
+        from category c
+                 left join category t
+                           on c.id = t.pid
+        where t.pid = c.id;
+    </select>
+
+
+</mapper>

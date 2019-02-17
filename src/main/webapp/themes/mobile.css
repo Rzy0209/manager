@@ -105,7 +105,6 @@
     float: none;
     display: table-cell;
 }
-
 .m-badge:not(.l-btn),
 .l-btn.m-badge::after {
     display: inline-block;
@@ -122,7 +121,6 @@
     color: #fff;
     z-index: 99999;
 }
-
 .l-btn.m-badge::after,
 .l-btn .m-badge {
     position: absolute;
@@ -146,7 +144,6 @@
     bottom: 0;
     right: 0;
 }
-
 .panel-footer .l-btn .l-btn-icon-top .m-badge,
 .panel-footer .l-btn .l-btn-icon-bottom .m-badge {
     top: 0;
@@ -412,12 +409,10 @@
 .datagrid-row, .datagrid-header-row {
     height: 35px;
 }
-
 .datalist .datagrid-group-title,
 .m-list .m-list-group {
     padding: 0 10px;
 }
-
 .datalist .datagrid-cell,
 .m-list li {
     padding: 10px;
@@ -426,7 +421,6 @@
 .m-list li .m-right {
     right: 10px;
 }
-
 .datalist .datalist-link,
 .m-list li > a {
     margin: -10px;
@@ -437,7 +431,6 @@
 .m-list li > a .m-right {
     right: 24px;
 }
-
 .datalist .datalist-link::after,
 .m-list li > a::after {
     right: 12px;
@@ -455,7 +448,6 @@
 .spinner-arrow-down {
     float: left;
 }
-
 .spinner-arrow-up::after,
 .spinner-arrow-down::after {
     position: absolute;

@@ -22,6 +22,9 @@ public class ShiroFilter {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //定义过滤器链
+        //多个过滤器   AnonymousFilter  匿名过滤器   anon
+        //     FormAuthenticationFilter 认证过滤器 authc
+
         Map<String, String> map = new HashMap<>();
         map.put("/**", "authc");
         map.put("/code/creatCode", "anon");
@@ -34,6 +37,7 @@ public class ShiroFilter {
         map.put("/main/image/*", "anon");
         map.put("/script/**", "anon");
         map.put("/themes/**", "anon");
+        map.put("/category/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }
